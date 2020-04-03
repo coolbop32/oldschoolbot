@@ -180,6 +180,9 @@ ${Emoji.Smithing} Smithing: ${msg.author.skillLevel(
 ${Emoji.Woodcutting} Woodcutting: ${msg.author.skillLevel(
 			SkillsEnum.Woodcutting
 		)} (${msg.author.settings.get(UserSettings.Skills.Woodcutting).toLocaleString()} xp)
+${Emoji.Construction} Construction: ${msg.author.skillLevel(
+			SkillsEnum.Construction
+		)} (${msg.author.settings.get(UserSettings.Skills.Construction).toLocaleString()} xp)
 ${Emoji.QuestIcon} QP: ${msg.author.settings.get(UserSettings.QP)}
 `);
 	}
@@ -335,6 +338,15 @@ ${Emoji.QuestIcon} QP: ${msg.author.settings.get(UserSettings.QP)}
 
 	async chop(msg: KlasaMessage, [quantity, logName]: [number, string]) {
 		this.client.commands.get('chop')!.run(msg, [quantity, logName]);
+	}
+
+	async build(msg: KlasaMessage, [quantity, plankName]: [number, string]) {
+		await this.client.commands
+			.get('build')!
+			.run(msg, [quantity, plankName])
+			.catch(err => {
+				throw err;
+			});
 	}
 
 	async quest(msg: KlasaMessage) {

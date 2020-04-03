@@ -23,13 +23,15 @@ import {
 	TickerTaskData,
 	ActivityTaskOptions,
 	SmithingActivityTaskOptions,
-	WoodcuttingActivityTaskOptions
+	WoodcuttingActivityTaskOptions,
+	ConstructionActivityTaskOptions
 } from '../lib/types/minions';
 import getActivityOfUser from '../lib/util/getActivityOfUser';
 import Smithing from '../lib/skills/smithing';
 import Woodcutting from '../lib/skills/woodcutting';
 import Skills from '../lib/skills';
 import getUsersPerkTier from '../lib/util/getUsersPerkTier';
+import Construction from '../lib/skills/construction';
 
 export default class extends Extendable {
 	public constructor(store: ExtendableStore, file: string[], directory: string) {
@@ -298,6 +300,7 @@ export default class extends Extendable {
 - Train mining with \`+mine\`
 - Train smithing with \`+smith\`
 - Train woodcutting with \`+chop\`
+- Train construction with \`+build\`
 - Gain quest points with \`+quest\`
 - Pat your minion with \`+minion pat\``;
 		}
@@ -367,6 +370,20 @@ export default class extends Extendable {
 				}. Approximately ${formattedDuration} remaining. Your ${
 					Emoji.Woodcutting
 				} Woodcutting level is ${this.skillLevel(SkillsEnum.Woodcutting)}`;
+			}
+
+			case Activity.Construction: {
+				const data = currentTask as ConstructionActivityTaskOptions;
+
+				const build = Construction.Buildables.find(
+					build => build.inputPlanks === data.buildableID
+				);
+
+				return `${this.minionName} is currently lighting ${data.quantity}x ${
+					build!.name
+				}. Approximately ${formattedDuration} remaining. Your ${
+					Emoji.Construction
+				} Construction level is ${this.skillLevel(SkillsEnum.Construction)}`;
 			}
 		}
 	}
