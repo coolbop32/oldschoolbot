@@ -43,6 +43,7 @@ import {
 	AgilityActivityTaskOptions,
 	AlchingActivityTaskOptions,
 	BarbarianAssaultActivityTaskOptions,
+	BlastfuranceActivityTaskOptions,
 	BuryingActivityTaskOptions,
 	CastingActivityTaskOptions,
 	ClueActivityTaskOptions,
@@ -549,6 +550,20 @@ export default class extends Extendable {
 
 			case Activity.MageTrainingArena: {
 				return `${this.minionName} is currently training at the Mage Training Arena. ${formattedDuration}`;
+			}
+
+			case Activity.Blastfurance: {
+				const data = currentTask as BlastfuranceActivityTaskOptions;
+
+				const bar = Smithing.BlastableBar.find(
+					blastablebar => blastablebar.id === data.blastablebarID
+				);
+
+				return `${this.minionName} is currently smelting ${data.quantity}x ${
+					bar!.name
+				}. ${formattedDuration} Your ${Emoji.Smithing} Smithing level is ${this.skillLevel(
+					SkillsEnum.Smithing
+				)}`;
 			}
 		}
 	}
