@@ -116,7 +116,7 @@ export default class extends BotCommand {
 		}
 
 		await addSubTaskToActivityTask<BlastfuranceActivityTaskOptions>(this.client, {
-			blastablebarID: bar.id,
+			barID: bar.id,
 			userID: msg.author.id,
 			channelID: msg.channel.id,
 			quantity,

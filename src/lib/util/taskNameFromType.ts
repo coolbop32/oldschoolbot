@@ -109,6 +109,6 @@ export function taskNameFromType(activityType: Activity) {
 		case Activity.MageTrainingArena:
 			return Tasks.MageTrainingArena;
 		case Activity.Blastfurance:
-			return Tasks.Blastfurance;
+			return Tasks.BlastfuranceActivity;
 	}
 }

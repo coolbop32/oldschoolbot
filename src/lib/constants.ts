@@ -139,6 +139,7 @@ export const enum Color {
 
 export const SupportServer = '342983479501389826';
 
+
 export const enum Tasks {
 	AgilityActivity = 'agilityActivity',
 	CookingActivity = 'cookingActivity',
@@ -193,7 +194,7 @@ export const enum Tasks {
 	Raids = 'raidsActivity',
 	Collecting = 'collectingActivity',
 	MageTrainingArena = 'mageTrainingArenaActivity',
-	Blastfurance = 'blastfuranceActivity'
+	BlastfuranceActivity = 'BlastfuranceActivity'
 }
 
 export enum Activity {
@@ -250,7 +251,7 @@ export enum Activity {
 	Raids = 'Raids',
 	Collecting = 'Collecting',
 	MageTrainingArena = 'MageTrainingArena',
-	Blastfurance = 'BlastfuranceActivity'
+	Blastfurance = 'Blastfurance'
 }
 
 export enum ActivityGroup {

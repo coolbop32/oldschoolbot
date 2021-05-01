@@ -9,10 +9,10 @@ import itemID from '../../lib/util/itemID';
 
 export default class extends Task {
 	async run(data: BlastfuranceActivityTaskOptions) {
-		let { blastablebarID, quantity, userID, channelID, duration } = data;
+		let { barID, quantity, userID, channelID, duration } = data;
 		const user = await this.client.users.fetch(userID);
 
-		const bar = Smithing.BlastableBars.find(bar => bar.id === blastablebarID)!;
+		const bar = Smithing.BlastableBars.find(bar => bar.id === barID)!;
 
 		let xpReceived = quantity * bar.xp;
 
