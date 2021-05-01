@@ -1,4 +1,5 @@
 import { Time } from 'e';
+
 import itemID from '../../../util/itemID';
 import { BlastableBar } from '../../types';
 
@@ -17,7 +18,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 12.5,
 		id: itemID('Iron bar'),
 		inputOres: { [itemID('Iron ore')]: 1 },
-		timeToUse: Time.Second * .47
+		timeToUse: Time.Second * 0.47
 	},
 	{
 		name: 'Silver bar',
@@ -25,7 +26,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 13.6,
 		id: itemID('Silver bar'),
 		inputOres: { [itemID('Silver ore')]: 1 },
-		timeToUse: Time.Second * .47
+		timeToUse: Time.Second * 0.47
 	},
 	{
 		name: 'Steel bar',
@@ -33,7 +34,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 17.5,
 		id: itemID('Steel bar'),
 		inputOres: { [itemID('Iron ore')]: 1, [itemID('Coal')]: 1 },
-		timeToUse: Time.Second * 1
+		timeToUse: Number(Time.Second)
 	},
 	{
 		name: 'Gold bar',
@@ -41,7 +42,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 22.5,
 		id: itemID('Gold bar'),
 		inputOres: { [itemID('Gold ore')]: 1 },
-		timeToUse: Time.Second * .47
+		timeToUse: Time.Second * 0.47
 	},
 	{
 		name: 'Mithril bar',

@@ -555,8 +555,8 @@ export default class extends Extendable {
 			case Activity.Blastfurance: {
 				const data = currentTask as BlastfuranceActivityTaskOptions;
 
-				const bar = Smithing.BlastableBar.find(
-					blastablebar => blastablebar.id === data.blastablebarID
+				const bar = Smithing.BlastableBars.find(
+					bar => bar.id === data.blastablebarID
 				);
 
 				return `${this.minionName} is currently smelting ${data.quantity}x ${

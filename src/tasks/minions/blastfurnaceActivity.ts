@@ -12,7 +12,7 @@ export default class extends Task {
 		let { blastablebarID, quantity, userID, channelID, duration } = data;
 		const user = await this.client.users.fetch(userID);
 
-		const bar = Smithing.BlastableBar.find(blastablebar => blastablebar.id === blastablebarID)!;
+		const bar = Smithing.BlastableBars.find(bar => bar.id === blastablebarID)!;
 
 		let xpReceived = quantity * bar.xp;
 

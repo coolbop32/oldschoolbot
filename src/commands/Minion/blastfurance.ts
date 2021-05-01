@@ -41,14 +41,14 @@ export default class extends BotCommand {
 			quantity = null;
 		}
 
-		const bar = Smithing.BlastableBar.find(
+		const bar = Smithing.BlastableBars.find(
 			bar =>
 				stringMatches(bar.name, barName) || stringMatches(bar.name.split(' ')[0], barName)
 		);
 
 		if (!bar) {
 			return msg.send(
-				`Thats not a valid bar to smelt. Valid bars are ${Smithing.BlastableBar.map(
+				`Thats not a valid bar to smelt. Valid bars are ${Smithing.BlastableBars.map(
 					bar => bar.name
 				).join(', ')}.`
 			);
@@ -60,16 +60,17 @@ export default class extends BotCommand {
 			);
 		}
 
-		
 		let timeToSmithSingleBar = bar.timeToUse + Time.Second / 10;
 
 		let coalbag = '';
 		if (
-			bar.id === itemID('Steel Bar') || itemID('Mithril Bar') || itemID('Admantite Bar') || itemID('Runite Bar') &&
-			msg.author.hasItemEquippedOrInBank(itemID('Coal bag'))
+			bar.id === itemID('Steel Bar') ||
+			bar.id === itemID('Mithril Bar') ||
+			bar.id === itemID('Adamantite Bar') ||
+			bar.id === itemID('Runite Bar') && msg.author.hasItemEquippedOrInBank(itemID('Coal bag'))
 		) {
 			coalbag = `\n\n**Boosts:** 60% speed boost for coal bag.`;
-			timeToSmithSingleBar = ((bar.timeToUse + Time.Second / 10)*.62);
+			timeToSmithSingleBar = (bar.timeToUse + Time.Second / 10) * 0.62;
 		}
 
 		const maxTripLength = msg.author.maxTripLength(Activity.Smithing);
@@ -135,7 +136,9 @@ export default class extends BotCommand {
 		return msg.send(
 			`${msg.author.minionName} is now smelting ${quantity}x ${
 				bar.name
-			}, it'll take around ${formatDuration(duration)} to finish.${goldGauntletMessage}${coalbag}`
+			}, it'll take around ${formatDuration(
+				duration
+			)} to finish.${goldGauntletMessage}${coalbag}`
 		);
 	}
 }
