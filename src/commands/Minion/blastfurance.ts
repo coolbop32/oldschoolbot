@@ -25,6 +25,7 @@ export default class extends BotCommand {
 			oneAtTime: true,
 			cooldown: 1,
 			usage: '<quantity:int{1}|name:...string> [name:...string]',
+			aliases: ['bf'],
 			usageDelim: ' ',
 			categoryFlags: ['minion', 'skilling'],
 			description: 'Sends your minion to smelt items, which is turning ores into bars.',
@@ -59,8 +60,17 @@ export default class extends BotCommand {
 			);
 		}
 
-		// All bars take 2.4s to smith, add on quarter of a second to account for banking/etc.
-		const timeToSmithSingleBar = bar.timeToUse + Time.Second / 4;
+		
+		let timeToSmithSingleBar = bar.timeToUse + Time.Second / 10;
+
+		let coalbag = '';
+		if (
+			bar.id === itemID('Steel Bar') || itemID('Mithril Bar') || itemID('Admantite Bar') || itemID('Runite Bar') &&
+			msg.author.hasItemEquippedOrInBank(itemID('Coal bag'))
+		) {
+			coalbag = `\n\n**Boosts:** 60% speed boost for coal bag.`;
+			timeToSmithSingleBar = ((bar.timeToUse + Time.Second / 10)*.62);
+		}
 
 		const maxTripLength = msg.author.maxTripLength(Activity.Smithing);
 
@@ -125,7 +135,7 @@ export default class extends BotCommand {
 		return msg.send(
 			`${msg.author.minionName} is now smelting ${quantity}x ${
 				bar.name
-			}, it'll take around ${formatDuration(duration)} to finish.${goldGauntletMessage}`
+			}, it'll take around ${formatDuration(duration)} to finish.${goldGauntletMessage}${coalbag}`
 		);
 	}
 }

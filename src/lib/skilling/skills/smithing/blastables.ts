@@ -9,7 +9,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 6.2,
 		id: itemID('Bronze bar'),
 		inputOres: { [itemID('Copper ore')]: 1, [itemID('Tin ore')]: 1 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * 1.05
 	},
 	{
 		name: 'Iron bar',
@@ -17,7 +17,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 12.5,
 		id: itemID('Iron bar'),
 		inputOres: { [itemID('Iron ore')]: 1 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * .47
 	},
 	{
 		name: 'Silver bar',
@@ -25,7 +25,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 13.6,
 		id: itemID('Silver bar'),
 		inputOres: { [itemID('Silver ore')]: 1 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * .47
 	},
 	{
 		name: 'Steel bar',
@@ -33,7 +33,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 17.5,
 		id: itemID('Steel bar'),
 		inputOres: { [itemID('Iron ore')]: 1, [itemID('Coal')]: 1 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * 1
 	},
 	{
 		name: 'Gold bar',
@@ -41,7 +41,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 22.5,
 		id: itemID('Gold bar'),
 		inputOres: { [itemID('Gold ore')]: 1 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * .47
 	},
 	{
 		name: 'Mithril bar',
@@ -49,7 +49,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 30,
 		id: itemID('Mithril bar'),
 		inputOres: { [itemID('Mithril ore')]: 1, [itemID('Coal')]: 2 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * 1.6
 	},
 	{
 		name: 'Adamantite bar',
@@ -57,7 +57,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 37.5,
 		id: itemID('Adamantite bar'),
 		inputOres: { [itemID('Adamantite ore')]: 1, [itemID('Coal')]: 3 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * 2.2
 	},
 	{
 		name: 'Runite bar',
@@ -65,7 +65,7 @@ const BlastableBars: BlastableBar[] = [
 		xp: 50,
 		id: itemID('Runite bar'),
 		inputOres: { [itemID('Runite ore')]: 1, [itemID('Coal')]: 4 },
-		timeToUse: Time.Second * 3.4
+		timeToUse: Time.Second * 2.6
 	}
 ];
 
