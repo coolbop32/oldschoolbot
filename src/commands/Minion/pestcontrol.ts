@@ -41,10 +41,6 @@ const buyables = [
 	}
 ];
 
-function canUseNoviceLander(user: KlasaUser): boolean {
-	return user.combatLevel >= 40;
-}
-
 export function canUseIntermediateLander(user: KlasaUser): boolean {
 	return user.combatLevel >= 70;
 }
@@ -85,7 +81,7 @@ export default class extends BotCommand {
 				if (user.minionIsBusy) {
 					return [true, 'your minion is busy.'];
 				}
-				if (!canUseNoviceLander) {
+				if (user.combatLevel < 40) {
 					return [true, "you don't have a combat level of atleast 40."];
 				}
 
@@ -99,7 +95,7 @@ export default class extends BotCommand {
 			return;
 		}
 
-		const perDuration = randomVariation(Time.Minute * 7, 5);
+		const perDuration = randomVariation(Time.Minute * 3.5, 2.5);
 		const quantity = Math.floor(msg.author.maxTripLength(Activity.SoulWars) / perDuration);
 		const duration = quantity * perDuration;
 
@@ -142,7 +138,7 @@ export default class extends BotCommand {
 		await msg.author.settings.update(UserSettings.Commendation, bal - item.commendation);
 		await msg.author.addItemsToBank({ [item.item.id]: 1 }, true);
 		return msg.channel.send(
-			`Added 1x ${item.item.name} to your bank, removed ${item.commendation}x Commendations.`
+			`Added 1x ${item.item.name} to your bank, removed ${item.commendation}x Commendations. \nYou have ${bal} commendations left`
 		);
 	}
 }
